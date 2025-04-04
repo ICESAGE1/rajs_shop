@@ -1,18 +1,9 @@
 const express = require("express");
-const router = express.Router();
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const { processPayment } = require("../controllers/paymentController");
 
-router.post("/pay", async (req, res) => {
-    try {
-        const { amount } = req.body;
-        const paymentIntent = await stripe.paymentIntents.create({
-            amount,
-            currency: "inr",
-        });
-        res.json({ clientSecret: paymentIntent.client_secret });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+const router = express.Router();
+
+router.post("/pay", processPayment);
 
 module.exports = router;
+
