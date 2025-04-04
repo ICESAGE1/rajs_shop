@@ -5,7 +5,10 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "framer-motion": "^10.12.16",
+    "lucide-react": "^0.316.0",
+    "tailwindcss": "^3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -14,3 +17,4 @@
     "eject": "react-scripts eject"
   }
 }
+
