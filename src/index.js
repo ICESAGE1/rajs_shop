@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Products from './data/Products';
-import './app.css'; // ✅ lowercase 'a'
+import './App.css'; // Make sure this path is correct (small 'a' ✅)
+import Products from './data/Products'; // Corrected path ✅
 
 const App = () => {
   return (
     <div>
       <header className="header">
         <h1 className="logo">Raj's Shop</h1>
-        <input className="search-bar" type="text" placeholder="Search products..." />
-        <a href="/cart" className="cart-link">🛒 Cart (0)</a>
+        <input type="text" className="search-bar" placeholder="Search products..." />
+        <div className="cart">
+          <a href="#cart">
+            🛒 Cart (0)
+          </a>
+        </div>
       </header>
 
+      {/* Product Listings */}
       <Products />
     </div>
   );
