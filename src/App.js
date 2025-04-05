@@ -1,33 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-const products = [
-  { name: 'Laptop', price: 50000, image: 'https://m.media-amazon.com/images/I/71RdoeXxtrL._SL1500_.jpg' },
-  { name: 'Smartphone', price: 20000, image: 'https://m.media-amazon.com/images/I/81xJ80yP5IL._SL1500_.jpg' },
-  { name: 'Headphones', price: 3000, image: 'https://m.media-amazon.com/images/I/71o8Q5XJS5L._SL1500_.jpg' },
+const productsList = [
+  { id: 1, name: 'Laptop', price: 50000 },
+  { id: 2, name: 'Smartphone', price: 20000 },
+  { id: 3, name: 'Headphones', price: 3000 },
 ];
 
 function App() {
+  const [search, setSearch] = useState('');
+  const [cart, setCart] = useState([]);
+
+  const handleAddToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  const filteredProducts = productsList.filter(product =>
+    product.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+
   return (
     <div className="app">
-      <header className="navbar">
-        <div className="logo">Raj's Shop</div>
-        <input className="search" type="text" placeholder="Search products" />
-        <div className="cart">🛒 Cart</div>
+      <header>
+        <h1>Raj's Shop</h1>
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </header>
 
-      <main className="product-grid">
-        {products.map((product, idx) => (
-          <div className="product-card" key={idx}>
-            <img src={product.image} alt={product.name} />
-            <h2>{product.name}</h2>
-            <p>₹{product.price}</p>
-            <button>Add to Cart</button>
-          </div>
-        ))}
+      <main>
+        <h2>Products</h2>
+        <div className="products">
+          {filteredProducts.map((product) => (
+            <div key={product.id} className="product-card">
+              <h3>{product.name}</h3>
+              <p>₹{product.price}</p>
+              <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+            </div>
+          ))}
+        </div>
+
+        <div className="cart">
+          <h2>🛒 Cart ({cart.length})</h2>
+          {cart.length === 0 ? (
+            <p>No items yet.</p>
+          ) : (
+            <>
+              <ul>
+                {cart.map((item, index) => (
+                  <li key={index}>
+                    {item.name} - ₹{item.price}
+                  </li>
+                ))}
+              </ul>
+              <p><strong>Total: ₹{totalPrice}</strong></p>
+            </>
+          )}
+        </div>
       </main>
     </div>
   );
 }
 
 export default App;
+
