@@ -1,29 +1,19 @@
+// src/data/Products.js
 import React from 'react';
-import './app.css'; // ✅ lowercase 'a'
-
-const products = [
-  {
-    id: 1,
-    name: 'Video Editing',
-    description: 'Professional video editing service for your needs.',
-    price: '₹999',
-  },
-  {
-    id: 2,
-    name: 'Poster Making',
-    description: 'Creative poster design for events, brands, or ads.',
-    price: '₹499',
-  },
-];
 
 const Products = () => {
+  const items = [
+    { id: 1, name: 'Video Editing', price: 1000 },
+    { id: 2, name: 'Poster Making', price: 500 },
+    { id: 3, name: 'Thumbnail Design', price: 300 },
+  ];
+
   return (
-    <div className="product-list">
-      {products.map(product => (
-        <div className="product-card" key={product.id}>
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <span className="price">{product.price}</span>
+    <div className="products-container">
+      {items.map(item => (
+        <div className="product-card" key={item.id}>
+          <h3>{item.name}</h3>
+          <p>₹{item.price}</p>
           <button>Add to Cart</button>
         </div>
       ))}
