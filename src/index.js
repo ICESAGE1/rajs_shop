@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Products from './Products';
+import Products from './data/Products';
 import './app.css'; // ✅ lowercase 'a'
 
 const App = () => {
