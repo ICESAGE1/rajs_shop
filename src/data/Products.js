@@ -1,4 +1,3 @@
-// src/data/Products.js
 import React from 'react';
 
 const Products = () => {
@@ -10,7 +9,7 @@ const Products = () => {
 
   return (
     <div className="products-container">
-      {items.map(item => (
+      {items.map((item) => (
         <div className="product-card" key={item.id}>
           <h3>{item.name}</h3>
           <p>₹{item.price}</p>
@@ -22,4 +21,3 @@ const Products = () => {
 };
 
 export default Products;
-
