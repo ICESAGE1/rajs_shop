@@ -1,26 +1,35 @@
-// src/Products.js
 import React from 'react';
-import './App.css';
+import './app.css'; // ✅ lowercase 'a'
 
-const Products = ({ id, title, image, price, rating }) => {
+const products = [
+  {
+    id: 1,
+    name: 'Video Editing',
+    description: 'Professional video editing service for your needs.',
+    price: '₹999',
+  },
+  {
+    id: 2,
+    name: 'Poster Making',
+    description: 'Creative poster design for events, brands, or ads.',
+    price: '₹499',
+  },
+];
+
+const Products = () => {
   return (
-    <div className="product">
-      <img src={image} alt={title} className="productImage" />
-      <div className="productInfo">
-        <p className="productTitle">{title}</p>
-        <p className="productPrice">₹{price}</p>
-        <div className="productRating">
-          {"⭐".repeat(rating)}
+    <div className="product-list">
+      {products.map(product => (
+        <div className="product-card" key={product.id}>
+          <h2>{product.name}</h2>
+          <p>{product.description}</p>
+          <span className="price">{product.price}</span>
+          <button>Add to Cart</button>
         </div>
-        <button className="addToCart">Add to Cart</button>
-      </div>
+      ))}
     </div>
   );
 };
 
 export default Products;
 
-  },
-];
-
-export default products;
