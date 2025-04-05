@@ -1,45 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Products from './Products';
-import './App.css';
+import './app.css'; // ✅ lowercase 'a'
 
 const App = () => {
   return (
-    <div className="app">
-      {/* Amazon-style header */}
+    <div>
       <header className="header">
-        <img
-          className="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
-          alt="RajShop"
-        />
-        <input className="searchInput" type="text" placeholder="Search RajShop..." />
-        <button className="searchButton">Search</button>
-        <button className="cartButton">Cart</button>
+        <h1 className="logo">Raj's Shop</h1>
+        <input className="search-bar" type="text" placeholder="Search products..." />
+        <a href="/cart" className="cart-link">🛒 Cart (0)</a>
       </header>
 
-      {/* Product section */}
-      <div className="productSection">
-        <Products
-          id="1"
-          title="Video Editing Service"
-          price={499}
-          image="https://cdn.pixabay.com/photo/2020/05/28/21/35/youtube-5230870_1280.jpg"
-          rating={4}
-        />
-        <Products
-          id="2"
-          title="Poster Making Service"
-          price={299}
-          image="https://cdn.pixabay.com/photo/2017/01/31/20/24/poster-2022853_1280.png"
-          rating={5}
-        />
-        {/* You can add more <Products /> here */}
-      </div>
+      <Products />
     </div>
   );
 };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
 
