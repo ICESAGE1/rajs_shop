@@ -1,33 +1,25 @@
-const products = [
-  {
-    id: 1,
-    name: 'Laptop',
-    price: 50000,
-    image: '/images/laptop.png',
-  },
-  {
-    id: 2,
-    name: 'Smartphone',
-    price: 20000,
-    image: '/images/phone.png',
-  },
-  {
-    id: 3,
-    name: 'Headphones',
-    price: 3000,
-    image: '/images/headphones.png',
-  },
-  {
-    id: 4,
-    name: 'Video Editing',
-    price: 1500,
-    image: '/images/video_editing.png',
-  },
-  {
-    id: 5,
-    name: 'Poster Making',
-    price: 800,
-    image: '/images/poster_making.png',
+// src/Products.js
+import React from 'react';
+import './App.css';
+
+const Products = ({ id, title, image, price, rating }) => {
+  return (
+    <div className="product">
+      <img src={image} alt={title} className="productImage" />
+      <div className="productInfo">
+        <p className="productTitle">{title}</p>
+        <p className="productPrice">₹{price}</p>
+        <div className="productRating">
+          {"⭐".repeat(rating)}
+        </div>
+        <button className="addToCart">Add to Cart</button>
+      </div>
+    </div>
+  );
+};
+
+export default Products;
+
   },
 ];
 
